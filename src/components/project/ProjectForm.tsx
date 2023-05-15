@@ -4,7 +4,15 @@ import Select from "../form/Select";
 import SubmitButton from "../form/SubmitButton";
 import styles from "./ProjectForm.module.css";
 
-function ProjectForm({ btnText }: { btnText: string }) {
+interface ProjectProps {
+  btnText: string;
+  handleSubmit: (formData: {
+    services: { name: string }[];
+    cost: number;
+  }) => void;
+}
+
+function ProjectForm({ btnText, handleSubmit }: ProjectProps) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
